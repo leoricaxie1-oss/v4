@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn {
+        @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold shadow-sm transition focus:outline-none focus:ring-2 focus:ring-offset-2;
+    }
+    .btn-primary  { @apply btn bg-brand-600 text-white hover:bg-brand-700 focus:ring-brand-500; }
+    .btn-secondary{ @apply btn bg-white text-slate-700 ring-1 ring-slate-300 hover:bg-slate-50 focus:ring-brand-500; }
+    .btn-danger   { @apply btn bg-rose-600 text-white hover:bg-rose-700 focus:ring-rose-500; }
+    .btn-success  { @apply btn bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500; }
+    .btn-warning  { @apply btn bg-amber-500 text-white hover:bg-amber-600 focus:ring-amber-500; }
+
+    .card  { @apply rounded-xl bg-white shadow-sm ring-1 ring-slate-200; }
+    .card-body  { @apply p-5 md:p-6; }
+
+    .form-label   { @apply mb-1 block text-sm font-medium text-slate-700; }
+    .form-input   { @apply block w-full rounded-lg border-slate-300 text-sm shadow-sm focus:border-brand-500 focus:ring-brand-500; }
+    .form-help    { @apply mt-1 text-xs text-slate-500; }
+    .form-error   { @apply mt-1 text-xs font-medium text-rose-600; }
+
+    .badge        { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium; }
+    .badge-info   { @apply badge bg-sky-100 text-sky-800; }
+    .badge-success{ @apply badge bg-emerald-100 text-emerald-800; }
+    .badge-warn   { @apply badge bg-amber-100 text-amber-800; }
+    .badge-danger { @apply badge bg-rose-100 text-rose-800; }
+    .badge-gray   { @apply badge bg-slate-100 text-slate-700; }
+
+    .sidebar-link { @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-brand-50 hover:text-brand-700 transition; }
+    .sidebar-link.active { @apply bg-brand-50 text-brand-700; }
+}
+
+.required::after { content: ' *'; @apply text-rose-500 font-bold; }

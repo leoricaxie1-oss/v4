@@ -1,0 +1,24 @@
+# XAMPP / Apache config — clean URLs through index.php.
+#
+# When dropped into htdocs/<name>/, this file makes URLs like
+# http://localhost/<name>/login resolve to index.php and have the path
+# parsed from REQUEST_URI. mod_rewrite is on by default in XAMPP.
+
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Serve real files/dirs (CSS, images, the assets/ folder, etc.).
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Otherwise route everything through the front controller.
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Block direct access to config and dotfiles.
+<FilesMatch "^(config\.php|\.env.*|\.git.*|.*\.sql)$">
+    Require all denied
+</FilesMatch>

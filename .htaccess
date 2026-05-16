@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # If the request doesn't match an actual file/dir at the project root,
+    # forward it into public/ so Laravel's front controller handles it.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Block direct access to dotfiles (.env, .git, ...)
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
